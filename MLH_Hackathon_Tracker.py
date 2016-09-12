@@ -30,11 +30,11 @@ else:
 	print("Done")
 
 print("Attempting to save downloaded page... ")
-if not (os.path.exists('MLH_Hackathons')):
-	print('\tThe "MLH_Hackathons" directory was not found. Creating now...')
-	os.makedirs('MLH_Hackathons')
+if not (os.path.exists('Hackathons')):
+	print('\tThe "Hackathons" directory was not found. Creating now...')
+	os.makedirs('Hackathons')
 currentTime = time.strftime("%Y%m%d_at_%H%M%S")
-webpageFile = open('MLH_Hackathons/' + currentTime + '.html', 'w')
+webpageFile = open('Hackathons/' + currentTime + '.html', 'w')
 webpageFile.write(page.text.encode('utf8'))
 webpageFile.close()
 print("\tDone writing to: " + currentTime + '.html')
@@ -45,14 +45,14 @@ hackathons = htmlTree.xpath('//h3[@itemprop="name"]/text()')
 print("Done")
 
 print("Attempting to save parsed data... ")
-hackathonsFile = open('MLH_Hackathons/' + currentTime + '.txt', 'w')
+hackathonsFile = open('Hackathons/' + currentTime + '.txt', 'w')
 for item in hackathons:
 	hackathonsFile.write("%s\n" % item)
 hackathonsFile.close()
 print("\tDone writing to: " + currentTime + '.txt')
 
 print("Detecting if previous runs exist...")
-hackathonsDirectory = os.listdir('MLH_Hackathons')
+hackathonsDirectory = os.listdir('Hackathons')
 hackathonsDirectory.sort()
 for item in hackathonsDirectory:
 	if (".txt" not in item):
@@ -64,7 +64,7 @@ else:
 	exit(0)
 
 print("Attempting to open previous record: " + hackathonsDirectory[-2] + '...'),
-previousHackathonFile = open('MLH_Hackathons/' + hackathonsDirectory[-2], 'r')
+previousHackathonFile = open('Hackathons/' + hackathonsDirectory[-2], 'r')
 print("Done\n\n")
 
 print("Parsing previous record now...")
