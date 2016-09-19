@@ -75,6 +75,9 @@ for item in hackathons:
 		newHackathons.append(item)
 if len(newHackathons) == 0:
 	print("No new hackathons were detected. :(")
+	os.remove('Hackathons/' + currentTime + '.txt')
+	os.remove('Hackathons/' + currentTime + '.html')
+	print("The files generated during this run were deleted.");
 else:
 	print("The following hackathons are new: ")
 	for item in newHackathons:
