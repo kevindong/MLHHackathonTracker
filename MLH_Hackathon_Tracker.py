@@ -22,7 +22,7 @@ from lxml import html
 print("Please note that VERY little testing has been done on this script.\n")
 
 print("Attempting to download page... "),
-page = requests.get('https://mlh.io/seasons/na-2017/events')
+page = requests.get("https://mlh.io/seasons/na-2017/events")
 if page.status_code != 200:
 	print("Error")
 	exit(1)
@@ -31,10 +31,10 @@ else:
 
 print("Attempting to save downloaded page... ")
 if not (os.path.exists('Hackathons')):
-	print('\tThe "Hackathons" directory was not found. Creating now...')
-	os.makedirs('Hackathons')
+	print("\tThe \"Hackathons\" directory was not found. Creating now...")
+	os.makedirs("Hackathons")
 currentTime = time.strftime("%Y%m%d_at_%H%M%S")
-webpageFile = open('Hackathons/' + currentTime + '.html', 'w')
+webpageFile = open("Hackathons/" + currentTime + '.html', 'w')
 webpageFile.write(page.text.encode('utf8'))
 webpageFile.close()
 print("\tDone writing to: " + currentTime + '.html')
@@ -45,17 +45,17 @@ hackathons = htmlTree.xpath('//h3[@itemprop="name"]/text()')
 print("Done")
 
 print("Attempting to save parsed data... ")
-hackathonsFile = open('Hackathons/' + currentTime + '.txt', 'w')
+hackathonsFile = open("Hackathons/" + currentTime + '.txt', 'w')
 for item in hackathons:
 	hackathonsFile.write("%s\n" % item)
 hackathonsFile.close()
 print("\tDone writing to: " + currentTime + '.txt')
 
 print("Detecting if previous runs exist...")
-hackathonsDirectory = os.listdir('Hackathons')
+hackathonsDirectory = os.listdir("Hackathons")
 hackathonsDirectory.sort()
 for item in hackathonsDirectory:
-	if (".txt" not in item):
+	if ('.txt' not in item):
 		hackathonsDirectory.remove(item)
 if (len(hackathonsDirectory) > 1):
 	print("\tAssumed this program has been previously run...")
@@ -64,7 +64,7 @@ else:
 	exit(0)
 
 print("Attempting to open previous record: " + hackathonsDirectory[-2] + '...'),
-previousHackathonFile = open('Hackathons/' + hackathonsDirectory[-2], 'r')
+previousHackathonFile = open("Hackathons/" + hackathonsDirectory[-2], 'r')
 print("Done\n\n")
 
 print("Parsing previous record now...")
@@ -75,8 +75,8 @@ for item in hackathons:
 		newHackathons.append(item)
 if len(newHackathons) == 0:
 	print("No new hackathons were detected. :(")
-	os.remove('Hackathons/' + currentTime + '.txt')
-	os.remove('Hackathons/' + currentTime + '.html')
+	os.remove("Hackathons/" + currentTime + '.txt')
+	os.remove("Hackathons/" + currentTime + '.html')
 	print("The files generated during this run were deleted.");
 else:
 	print("The following hackathons are new: ")
