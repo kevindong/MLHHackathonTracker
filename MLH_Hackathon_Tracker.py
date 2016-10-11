@@ -47,7 +47,7 @@ print("Done")
 print("Attempting to save parsed data... ")
 hackathonsFile = open("Hackathons/" + currentTime + '.txt', 'w')
 for item in hackathons:
-	hackathonsFile.write("%s\n" % item)
+	hackathonsFile.write(("%s\n" % item).encode('utf8'))
 hackathonsFile.close()
 print("\tDone writing to: " + currentTime + '.txt')
 
