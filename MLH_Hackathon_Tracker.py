@@ -71,7 +71,7 @@ print("Parsing previous record now...")
 previousHackathonList = [line.rstrip('\n') for line in previousHackathonFile]
 newHackathons = []
 for item in hackathons:
-	if item not in previousHackathonList:
+	if item.encode('utf8') not in previousHackathonList:
 		newHackathons.append(item)
 if len(newHackathons) == 0:
 	print("No new hackathons were detected. :(")
