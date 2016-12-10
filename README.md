@@ -4,9 +4,11 @@
 
 ## Instructions
 
-You may need to install the `requests` library. The easiest way is to run `pip install requests`. Obviously, you'll also need to have Python installed. 
+You should use Python 3.x.
 
-To use this script, just open up terminal, `cd` into the appropriate directory, and then type `python MLH_Hackathon_Tracker.py`.
+You may need to install the `requests` and `lxml` library. The easiest way is to run `pip3.x install requests && pip3.x install lxml` where 3.x stands for the current version of Python 3 that you have installed. Only replace the `x`. Obviously, you'll also need to have Python 3 installed. 
+
+To use this script, just open up terminal, `cd` into the appropriate directory, and then type `python3 MLH_Hackathon_Tracker.py`.
 
 ## License
 MIT License. See the `LICENSE` file for details.

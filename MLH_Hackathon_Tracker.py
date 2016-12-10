@@ -9,7 +9,7 @@
 #
 # Author:  Kevin Dong (https://www.github.com/kevindong)
 # License: MIT License
-# Date:    September 8, 2016
+# Date:    December 10, 2016
 # Source:  https://www.github.com/kevindong/MLH_Hackathon_Tracker
 
 import requests
@@ -35,7 +35,7 @@ if not (os.path.exists('Hackathons')):
 	os.makedirs("Hackathons")
 currentTime = time.strftime("%Y%m%d_at_%H%M%S")
 webpageFile = open("Hackathons/" + currentTime + '.html', 'w')
-webpageFile.write(page.text.encode('utf8'))
+webpageFile.write(page.text)
 webpageFile.close()
 print("\tDone writing to: " + currentTime + '.html')
 
@@ -47,7 +47,7 @@ print("Done")
 print("Attempting to save parsed data... ")
 hackathonsFile = open("Hackathons/" + currentTime + '.txt', 'w')
 for item in hackathons:
-	hackathonsFile.write(("%s\n" % item).encode('utf8'))
+	hackathonsFile.write(("%s\n" % item))
 hackathonsFile.close()
 print("\tDone writing to: " + currentTime + '.txt')
 
@@ -71,7 +71,7 @@ print("Parsing previous record now...")
 previousHackathonList = [line.rstrip('\n') for line in previousHackathonFile]
 newHackathons = []
 for item in hackathons:
-	if item.encode('utf8') not in previousHackathonList:
+	if item not in previousHackathonList:
 		newHackathons.append(item)
 if len(newHackathons) == 0:
 	print("No new hackathons were detected. :(")
